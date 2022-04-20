@@ -6,7 +6,7 @@ enum UrlContextState { loading, ready }
 
 class UrlContext extends ReactterContext {
   final _urlRepo = UrlRepository();
-  final inputValue = UseState<String>("");
+  late final inputValue = UseState<String>("", context: this);
 
   late final state =
       UseState<UrlContextState>(UrlContextState.ready, context: this);
@@ -32,6 +32,8 @@ class UrlContext extends ReactterContext {
   }
 
   onSaveUrl() async {
+    print(inputValue.value);
+
     state.value = UrlContextState.loading;
 
     await Future.delayed(const Duration(milliseconds: 1500));

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nubank_url_shortener/utils/regex.dart';
 import 'package:reactter/reactter.dart';
 
 class TextFieldInput extends StatefulWidget {
@@ -16,7 +17,7 @@ class TextFieldInput extends StatefulWidget {
 }
 
 class _TextFieldInputState extends State<TextFieldInput> {
-  final urlInputController = TextEditingController();
+  final _urlInputController = TextEditingController();
 
   @override
   void initState() {
@@ -25,29 +26,26 @@ class _TextFieldInputState extends State<TextFieldInput> {
     widget.inputValue.didUpdate(
       (oldValue, newValue) {
         if (newValue == "") {
-          urlInputController.text = newValue;
-          setState(() {});
+          _urlInputController.text = "";
         }
+        setState(() {});
       },
-    );
-
-    urlInputController.addListener(
-      () => setState(
-        () {
-          widget.inputValue.value = urlInputController.text;
-        },
-      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      controller: _urlInputController,
       readOnly: widget.isLoading,
-      controller: urlInputController,
+      onChanged: (text) {
+        widget.inputValue.value = text;
+      },
+      validator: (value) => validateUrl(value ?? ""),
       obscureText: false,
       decoration: InputDecoration(
-        suffixIcon: urlInputController.text.isEmpty
+        suffixIcon: widget.inputValue.value == ""
             ? const SizedBox()
             : IconButton(
                 splashRadius: 1,
