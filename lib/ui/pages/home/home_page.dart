@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
                       if (!result) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           ErrorSnackbar(
-                            text: "Can't save the url, try again",
+                            text: "Ups! something happened",
                           ),
                         );
                       }
