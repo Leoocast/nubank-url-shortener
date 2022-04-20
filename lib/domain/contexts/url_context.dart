@@ -15,7 +15,7 @@ class UrlContext extends ReactterContext {
 
   late final urlList = UseState<List<UrlResponse>>([], context: this);
 
-  onSaveUrl() async {
+  Future<bool> onSaveUrl() async {
     state.value = UrlContextState.loading;
 
     final result = await _urlRepo.saveUrl(Url(inputValue.value));
@@ -26,5 +26,7 @@ class UrlContext extends ReactterContext {
 
     inputValue.value = "";
     state.value = UrlContextState.ready;
+
+    return result != null;
   }
 }

@@ -9,12 +9,13 @@ class UrlCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
       margin: const EdgeInsets.only(bottom: 10),
       elevation: 0,
       child: Column(
         children: [
-          // Usamos ListTile para ordenar la información del card como titulo, subtitulo e icono
           ListTile(
             dense: true,
             contentPadding:
@@ -32,5 +33,3 @@ class UrlCard extends StatelessWidget {
     );
   }
 }
-
-class FadeInDown {}

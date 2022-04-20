@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nubank_url_shortener/domain/contexts/url_context.dart';
+import 'package:nubank_url_shortener/ui/widgets/error_snackbar.dart';
 import 'package:nubank_url_shortener/ui/pages/home/widgets/send_button.dart';
 import 'package:nubank_url_shortener/ui/pages/home/widgets/url_list.dart';
 import 'package:nubank_url_shortener/ui/widgets/dismissible.dart';
-import 'package:nubank_url_shortener/ui/widgets/text_field.dart';
-import 'package:nubank_url_shortener/utils/regex.dart';
+import 'package:nubank_url_shortener/ui/pages/home/widgets/text_field.dart';
+import 'package:nubank_url_shortener/utils/validations.dart';
 import 'package:reactter/reactter.dart';
 
 class HomePage extends StatelessWidget {
@@ -40,6 +41,19 @@ class HomePage extends StatelessWidget {
                     final isLoading =
                         urlContext.state.value == UrlContextState.loading;
 
+                    onPressSave() async {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                      final result = await urlContext.onSaveUrl();
+
+                      if (!result) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          ErrorSnackbar(
+                            text: "Can't save the url, try again",
+                          ),
+                        );
+                      }
+                    }
+
                     return Row(
                       children: [
                         Flexible(
@@ -50,12 +64,7 @@ class HomePage extends StatelessWidget {
                         ),
                         const SizedBox(width: 15),
                         SaveButton(
-                          onPressed: validateUrlCondition
-                              ? () {
-                                  FocusManager.instance.primaryFocus?.unfocus();
-                                  urlContext.onSaveUrl();
-                                }
-                              : null,
+                          onPressed: validateUrlCondition ? onPressSave : null,
                           isLoading: isLoading,
                         )
                       ],

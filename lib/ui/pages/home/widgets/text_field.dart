@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nubank_url_shortener/utils/regex.dart';
+import 'package:nubank_url_shortener/utils/validations.dart';
 import 'package:reactter/reactter.dart';
 
 class TextFieldInput extends StatefulWidget {

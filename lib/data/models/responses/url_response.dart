@@ -1,23 +1,21 @@
 class UrlResponse {
   final String? alias;
-  final UrlResponseLinks? links;
+  final _UrlResponseLinks? links;
 
   UrlResponse({this.alias, this.links});
 
-  factory UrlResponse.fromJson(dynamic json) {
-    return UrlResponse(
-      alias: json['alias'],
-      links: UrlResponseLinks(
-        self: json['_links']['self'],
-        short: json['_links']['short'],
-      ),
-    );
-  }
+  factory UrlResponse.fromJson(dynamic json) => UrlResponse(
+        alias: json['alias'],
+        links: _UrlResponseLinks(
+          self: json['_links']['self'],
+          short: json['_links']['short'],
+        ),
+      );
 }
 
-class UrlResponseLinks {
+class _UrlResponseLinks {
   final String? self;
   final String? short;
 
-  UrlResponseLinks({this.self, this.short});
+  _UrlResponseLinks({this.self, this.short});
 }

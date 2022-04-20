@@ -3,15 +3,3 @@ final urlRegExp = RegExp(
   caseSensitive: false,
   multiLine: false,
 );
-
-String? validateUrl(String value) {
-  if (value == "") {
-    return null;
-  }
-
-  if (!urlRegExp.hasMatch(value)) {
-    return 'Url is not valid';
-  }
-
-  return null;
-}
