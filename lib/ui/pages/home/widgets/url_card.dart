@@ -16,10 +16,15 @@ class UrlCard extends StatelessWidget {
         children: [
           // Usamos ListTile para ordenar la información del card como titulo, subtitulo e icono
           ListTile(
+            dense: true,
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 3, horizontal: 15),
-            title: Text(url.url ?? ""),
-            dense: false,
+            title: Text(
+              url.links?.self ?? "",
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              softWrap: false,
+            ),
             subtitle: Text(url.links?.short ?? ""),
           ),
         ],

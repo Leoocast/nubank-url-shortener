@@ -1,52 +1,30 @@
 import 'package:nubank_url_shortener/data/models/responses/url_response.dart';
 import 'package:nubank_url_shortener/data/repositories/url_repository.dart';
+import 'package:nubank_url_shortener/data/models/url.dart';
 import 'package:reactter/reactter.dart';
 
 enum UrlContextState { loading, ready }
 
 class UrlContext extends ReactterContext {
   final _urlRepo = UrlRepository();
+
   late final inputValue = UseState<String>("", context: this);
 
   late final state =
       UseState<UrlContextState>(UrlContextState.ready, context: this);
 
-  late final urlList = UseState<List<UrlResponse>>([
-    UrlResponse(
-      url: "youtube.com",
-      links:
-          UrlResponseLinks(self: 'youtube.com', short: 'shorted.youtube.com'),
-    ),
-    UrlResponse(
-      url: "google.com",
-      links: UrlResponseLinks(self: 'google.com', short: 'shorted.google.com'),
-    ),
-  ], context: this);
-
-  @override
-  void awake() async {
-    super.awake();
-    final url = await _urlRepo.getUrl('55563');
-
-    print("Awakening!");
-  }
+  late final urlList = UseState<List<UrlResponse>>([], context: this);
 
   onSaveUrl() async {
-    print(inputValue.value);
-
     state.value = UrlContextState.loading;
 
-    await Future.delayed(const Duration(milliseconds: 1500));
+    final result = await _urlRepo.saveUrl(Url(inputValue.value));
 
-    state.value = UrlContextState.ready;
+    if (result != null) {
+      urlList.value = [...urlList.value, result];
+    }
+
     inputValue.value = "";
-    urlList.value = [
-      ...urlList.value,
-      UrlResponse(
-        url: "youtube.com",
-        links:
-            UrlResponseLinks(self: 'youtube.com', short: 'shorted.youtube.com'),
-      ),
-    ];
+    state.value = UrlContextState.ready;
   }
 }

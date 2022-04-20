@@ -5,4 +5,6 @@ class Url {
   factory Url.fromJson(dynamic json) {
     return Url(json['url'] as String);
   }
+
+  toMap() => {"url": url};
 }
