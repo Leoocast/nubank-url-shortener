@@ -33,7 +33,12 @@ class TextFieldInput extends StatelessWidget {
                 splashRadius: 1,
                 alignment: Alignment.bottomRight,
                 iconSize: 20,
-                onPressed: isLoading ? null : controller.clear,
+                onPressed: isLoading
+                    ? null
+                    : () {
+                        controller.clear();
+                        inputValue.value = "";
+                      },
                 icon: const Icon(Icons.close),
               ),
         hintText: "https://leoocast.medium.com",
