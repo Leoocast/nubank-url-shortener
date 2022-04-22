@@ -42,7 +42,7 @@ class _TextFieldInputState extends State<TextFieldInput> {
       onChanged: (text) {
         widget.inputValue.value = text;
       },
-      validator: (value) => validateUrl(value ?? ""),
+      validator: (value) => validateUrlMessage(value ?? ""),
       obscureText: false,
       decoration: InputDecoration(
         suffixIcon: widget.inputValue.value == ""

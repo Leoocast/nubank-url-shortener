@@ -7,12 +7,16 @@ class UrlRepository {
   final _route = "/api/alias";
 
   //Testing porpuses
-  Future<Url> getUrl(String id) async {
-    final response = await _client.get(_route + "/12581");
+  Future<Url?> getUrl(String id) async {
+    try {
+      final response = await _client.get("$_route/$id");
 
-    final url = Url.fromJson(response.data);
+      final url = Url.fromJson(response.data);
 
-    return url;
+      return url;
+    } catch (e) {
+      return null;
+    }
   }
 
   Future<UrlResponse?> saveUrl(Url url) async {

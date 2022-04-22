@@ -36,7 +36,8 @@ class HomePage extends StatelessWidget {
 
                     final inputValue = urlContext.inputValue.value;
                     final validateUrlCondition =
-                        validateUrl(inputValue) == null && inputValue != "";
+                        validateUrlMessage(inputValue) == null &&
+                            inputValue != "";
 
                     final isLoading =
                         urlContext.state.value == UrlContextState.loading;

@@ -1,6 +1,6 @@
 import 'package:nubank_url_shortener/utils/regex.dart';
 
-String? validateUrl(String value) {
+String? validateUrlMessage(String value) {
   if (value == "") {
     return null;
   }
