@@ -24,8 +24,9 @@ class UrlContext extends ReactterContext {
       urlList.value = [...urlList.value, result];
     }
 
-    inputValue.value = "";
     state.value = UrlContextState.ready;
+
+    inputValue.value = "";
 
     return result != null;
   }

@@ -7,9 +7,7 @@ class UrlList extends ReactterComponent<UrlContext> {
   const UrlList({Key? key}) : super(key: key);
 
   @override
-  listen(ctx) {
-    return [ctx.urlList];
-  }
+  listen(ctx) => [ctx.urlList];
 
   @override
   Widget render(ctx) {

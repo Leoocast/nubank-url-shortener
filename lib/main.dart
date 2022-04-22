@@ -14,7 +14,7 @@ class App extends StatelessWidget {
       title: 'Nubank app',
       initialRoute: '/',
       routes: {
-        "/": (_) => HomePage(),
+        "/": (_) => const HomePage(),
       },
       theme: ThemeData.dark(),
     );
