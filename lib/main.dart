@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'ui/pages/home/home_page.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const App());
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Nubank app',
       initialRoute: '/',
       routes: {
-        "/": (_) => const HomePage(),
+        "/": (_) => HomePage(),
       },
       theme: ThemeData.dark(),
     );

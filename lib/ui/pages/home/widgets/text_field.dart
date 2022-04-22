@@ -25,9 +25,6 @@ class _TextFieldInputState extends State<TextFieldInput> {
 
     widget.inputValue.didUpdate(
       (oldValue, newValue) {
-        if (newValue == "") {
-          _urlInputController.text = "";
-        }
         setState(() {});
       },
     );
@@ -36,6 +33,7 @@ class _TextFieldInputState extends State<TextFieldInput> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autofocus: false,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: _urlInputController,
       readOnly: widget.isLoading,
@@ -51,9 +49,8 @@ class _TextFieldInputState extends State<TextFieldInput> {
                 splashRadius: 1,
                 alignment: Alignment.bottomRight,
                 iconSize: 20,
-                onPressed: widget.isLoading
-                    ? null
-                    : () => widget.inputValue.value = "",
+                onPressed:
+                    widget.isLoading ? null : () => _urlInputController.clear(),
                 icon: const Icon(Icons.close),
               ),
         hintText: "https://leoocast.medium.com",
