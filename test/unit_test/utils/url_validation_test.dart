@@ -4,11 +4,10 @@ import 'package:nubank_url_shortener/utils/validations.dart';
 void main() {
   group("FEATURE: Validating URL message", () {
     test(
-      "GIVEN the url 'https://github.com/Leoocast/reactter' WHEN validateUrl is called THEN result is 'null'",
+      "GIVEN the url 'https://www.google.com' WHEN validateUrl is called THEN result is 'null'",
       () async {
         // ACT
-        final result =
-            validateUrlMessage('https://github.com/Leoocast/reactter');
+        final result = validateUrlMessage('https://www.google.com');
 
         // ASSERT
         expect(result, null);
@@ -26,10 +25,10 @@ void main() {
     );
 
     test(
-      "GIVEN the url '2devs.io' WHEN validateUrlMessage is called THEN result is 'Url is not valid'",
+      "GIVEN the url 'google.com' WHEN validateUrlMessage is called THEN result is 'Url is not valid'",
       () async {
         // ACT
-        final result = validateUrlMessage('2devs.io');
+        final result = validateUrlMessage('google.com');
 
         // ASSERT
         expect(result, 'Url is not valid');

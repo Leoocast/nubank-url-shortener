@@ -26,7 +26,7 @@ void main() {
         expect(cardFinder, findsNothing);
 
         // ARRANGE
-        await tester.enterText(inputFinder, 'github.com/Leoocast');
+        await tester.enterText(inputFinder, 'github.com');
 
         // ACT
         await tester.tap(buttonFinder);

@@ -41,7 +41,7 @@ class TextFieldInput extends StatelessWidget {
                       },
                 icon: const Icon(Icons.close),
               ),
-        hintText: "https://leoocast.medium.com",
+        hintText: "https://google.com",
         labelText: 'Url',
       ),
     );

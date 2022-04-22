@@ -45,11 +45,11 @@ void main() {
       );
 
       test(
-        "GIVEN the Recently shortened URLs empty AND TextFieldInput with a value 'https://github.com/Leoocast' THEN a new card has to appear",
+        "GIVEN the Recently shortened URLs empty AND TextFieldInput with a value 'https://github.com/' THEN a new card has to appear",
         () async {
           await driver.tap(input);
           await driver.enterText('');
-          await driver.enterText('https://github.com/Leoocast');
+          await driver.enterText('https://github.com/');
           await driver.tap(button);
 
           final card = find.byValueKey('card_0');

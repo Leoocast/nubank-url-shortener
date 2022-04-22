@@ -21,8 +21,7 @@ void main() {
 
         // ARRANGE
         // Emulating a new url
-        const urlToTest =
-            'https://leoocast.medium.com/from-react-to-flutter-how-to-deal-with-state-management-6ca265ad8f28';
+        const urlToTest = 'https://google.com';
 
         when(
           urlRepo.saveUrl(
