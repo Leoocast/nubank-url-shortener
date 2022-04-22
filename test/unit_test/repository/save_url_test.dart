@@ -62,6 +62,7 @@ void main() {
         final result = await urlRepo.saveUrl(Url('Not valid URL'));
 
         // ASSERT
+        //This alias is because is already registered
         expect(result?.alias, '57805');
         expect(result?.links?.self, 'Not valid URL');
         expect(result?.links?.short,

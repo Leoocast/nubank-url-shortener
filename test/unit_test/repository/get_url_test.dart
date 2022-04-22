@@ -37,16 +37,5 @@ void main() {
         expect(result, null);
       },
     );
-
-    test(
-      "GIVEN a random id isn't register like '99854' WHEN getUrl is called THEN url response is 'null'",
-      () async {
-        // ACT
-        final result = await urlRepo.getUrl('99854');
-
-        // ASSERT
-        expect(result, null);
-      },
-    );
   });
 }

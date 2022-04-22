@@ -22,7 +22,7 @@ class UrlList extends ReactterComponent<UrlContext> {
           //Reversed list
           final url = ctx.urlList.value[(listLength - 1) - index];
 
-          return UrlCard(url: url);
+          return UrlCard(url: url, index: index);
         },
       ),
     );
